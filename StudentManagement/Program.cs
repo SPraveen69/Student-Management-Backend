@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using StudentManagement.Services.Token;
 using StudentManagement.Services.User;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +15,7 @@ builder.Services.AddAuthentication(
                }
                ).AddJwtBearer(options =>
                {
-                   var key = Encoding.UTF8.GetBytes("this is my custom Secret key for authentication");
+                   var key = Encoding.UTF8.GetBytes("secret key");
                    options.SaveToken = true;
                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                    {
