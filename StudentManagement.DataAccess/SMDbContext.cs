@@ -10,12 +10,27 @@ namespace StudentManagement.DataAccess
 {
     public class SMDbContext : DbContext
     {
-        public DbSet<Users> Users { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Student> Students{ get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Server=DESKTOP-CFE50DT\\SQLEXPRESS; Database=SMS; User Id=sa; Password=admin;
-            optionsBuilder.UseSqlServer(connectionString);
+            var connectionString = "Server=DESKTOP-CFE50DT\\SQLEXPRESS; Database=SMS; User Id=sa; Password=admin";
+            if (optionsBuilder != null)
+            {
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                 .HasKey(k => k.Username);
+
+            modelBuilder.Entity<Student>()
+                .HasKey(k => k.Id);
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StudentManagement.Models
 {
-    public class Users
+    public class User
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Required]
