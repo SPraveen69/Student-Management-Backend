@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using StudentManagement.DataAccess;
 using StudentManagement.Services.Token;
 using StudentManagement.Services.User;
 using System.Text;
@@ -15,7 +16,7 @@ builder.Services.AddAuthentication(
                }
                ).AddJwtBearer(options =>
                {
-                   var key = Encoding.UTF8.GetBytes("secret key");
+                   var key = Encoding.UTF8.GetBytes("this is my custom Secret key for authentication");
                    options.SaveToken = true;
                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                    {
@@ -42,7 +43,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserRepository, UserService>();
 builder.Services.AddScoped<IJWTRepository, JWTManager>();
-
+builder.Services.AddScoped<SMDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

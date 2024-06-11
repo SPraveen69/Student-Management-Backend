@@ -45,5 +45,10 @@ namespace StudentManagement.Models
         [Required]
         [MaxLength(200)]
         public string Address { get; set; }
+
+        [Required]
+        public Status Status { get; set; }
+
+        public DateTime last_sync_date_time { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace StudentManagement.Models
 {
     public class User
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public int UserId { get; set; }
         

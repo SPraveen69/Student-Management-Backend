@@ -42,7 +42,7 @@ namespace StudentManagement.Services.Token
                 if (VerifyPassword(userFromDb.Password, userLoginDto.Password))
                 {
                     var tokenHandler = new JwtSecurityTokenHandler();
-                    var tokenKey = Encoding.UTF8.GetBytes("secret key");
+                    var tokenKey = Encoding.UTF8.GetBytes("this is my custom Secret key for authentication");
 
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
