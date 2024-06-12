@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement", "StudentManagement\StudentManagement.csproj", "{A2229A43-9851-4398-9099-BF53CA433141}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManagement", "StudentManagement\StudentManagement.csproj", "{A2229A43-9851-4398-9099-BF53CA433141}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement.Models", "StudentManagement.Models\StudentManagement.Models.csproj", "{555E5A11-7757-4A16-8AB2-508472F8FF1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManagement.Models", "StudentManagement.Models\StudentManagement.Models.csproj", "{555E5A11-7757-4A16-8AB2-508472F8FF1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement.Services", "StudentManagement.Services\StudentManagement.Services.csproj", "{630C3FC7-01A0-4AC4-B950-EBC98BC8E9D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManagement.Services", "StudentManagement.Services\StudentManagement.Services.csproj", "{630C3FC7-01A0-4AC4-B950-EBC98BC8E9D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement.DataAccess", "StudentManagement.DataAccess\StudentManagement.DataAccess.csproj", "{00DA09AF-2122-4A66-A96A-2D3966CB63FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManagement.DataAccess", "StudentManagement.DataAccess\StudentManagement.DataAccess.csproj", "{00DA09AF-2122-4A66-A96A-2D3966CB63FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

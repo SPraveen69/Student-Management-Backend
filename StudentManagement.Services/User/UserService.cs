@@ -15,6 +15,10 @@ namespace StudentManagement.Services.User
         private readonly SMDbContext _context = new SMDbContext();
         StudentManagement.Models.User IUserRepository.Adduser(UserDto userDto)
         {
+            if (_context.Users.Any(u => u.Username == userDto.Username)) 
+            { 
+                throw new Exception("Username already exists");
+            }
             string hashpassword = JWTManager.HashPassword(userDto.Password);
 
             var user = new StudentManagement.Models.User
@@ -26,7 +30,6 @@ namespace StudentManagement.Services.User
                 Status = Status.Active,
                 last_sync_date_time = DateTime.Now,
             };
-
             _context.Users.Add(user);
             _context.SaveChanges();
             return user;
