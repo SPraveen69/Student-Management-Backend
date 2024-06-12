@@ -1,4 +1,5 @@
-﻿using StudentManagement.Models;
+﻿using Microsoft.AspNetCore.Http;
+using StudentManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,6 @@ namespace StudentManagement.Services.Models
         public string DOB { get; set; }
         public string Address { get; set; }
         public DateTime last_sync_date_time { get; set; }
-        public byte[] Photo { get; set; }
+        public IFormFile Photo { get; set; }
     }
 }

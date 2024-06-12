@@ -10,7 +10,7 @@ namespace StudentManagement.Services.Student
 {
     public interface IStudentRepository
     {
-        public StudentManagement.Models.Student AddStudent(StudentDto studentDto);
+       // public  StudentManagement.Models.Student AddStudent(StudentDto studentDto);
         public List<StudentManagement.Models.Student> AllStudents();
 
         public StudentManagement.Models.Student GetStudent(int studentId);
@@ -18,7 +18,6 @@ namespace StudentManagement.Services.Student
         public StudentManagement.Models.Student DeleteStudent(int id);
 
         public StudentManagement.Models.Student EditStudent(int studentId, StudentDto studentDto);
-
-
+        StudentManagement.Models.Student AddStudent(StudentDto studentDto);
     }
 }

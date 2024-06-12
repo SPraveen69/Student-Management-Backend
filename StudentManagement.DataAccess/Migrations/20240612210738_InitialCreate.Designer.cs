@@ -12,8 +12,8 @@ using StudentManagement.DataAccess;
 namespace StudentManagement.DataAccess.Migrations
 {
     [DbContext(typeof(SMDbContext))]
-    [Migration("20240611164917_InitialV1.0")]
-    partial class InitialV10
+    [Migration("20240612210738_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace StudentManagement.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("StudentManagement.Models.Students", b =>
+            modelBuilder.Entity("StudentManagement.Models.Student", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -64,12 +64,22 @@ namespace StudentManagement.DataAccess.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
+                    b.Property<byte[]>("Photo")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("last_sync_date_time")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("StudentManagement.Models.Users", b =>
+            modelBuilder.Entity("StudentManagement.Models.User", b =>
                 {
                     b.Property<string>("Username")
                         .HasMaxLength(20)
@@ -94,7 +104,10 @@ namespace StudentManagement.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.Property<DateTime>("last_sync_date_time")
                         .HasColumnType("datetime2");

@@ -26,7 +26,7 @@ namespace StudentManagement.Services.Student
                 Address = studentDto.Address,
                 Status = Status.Active,
                 last_sync_date_time = DateTime.Now,
-                Photo = studentDto.Photo
+               // Photo = studentDto.Photo
             };
             _context.Add(student);
             _context.SaveChanges();
@@ -64,7 +64,7 @@ namespace StudentManagement.Services.Student
                 existStudent.DOB = studentDto.DOB;
                 existStudent.Address = studentDto.Address;
                 existStudent.last_sync_date_time = DateTime.Now;
-                existStudent.Photo = studentDto.Photo;
+                //existStudent.Photo = studentDto.Photo;
 
                 _context.SaveChanges();
                 return existStudent;
