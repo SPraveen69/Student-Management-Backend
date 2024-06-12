@@ -15,7 +15,7 @@ namespace StudentManagement.Services.Student
 
         public StudentManagement.Models.Student GetStudent(int studentId);
 
-        public StudentManagement.Models.Student DeleteStudent(StudentManagement.Models.Student student);
+        public StudentManagement.Models.Student DeleteStudent(int id);
 
         public StudentManagement.Models.Student EditStudent(int studentId, StudentDto studentDto);
 

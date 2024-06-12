@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using StudentManagement.DataAccess;
+using StudentManagement.Services.Student;
 using StudentManagement.Services.Token;
 using StudentManagement.Services.User;
 using System.Text;
@@ -43,6 +44,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserRepository, UserService>();
 builder.Services.AddScoped<IJWTRepository, JWTManager>();
+builder.Services.AddScoped<IStudentRepository, StudentService>();
 builder.Services.AddScoped<SMDbContext>();
 var app = builder.Build();
 

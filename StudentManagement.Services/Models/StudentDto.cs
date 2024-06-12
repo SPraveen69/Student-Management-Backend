@@ -17,7 +17,7 @@ namespace StudentManagement.Services.Models
         public string NIC { get; set; }
         public string DOB { get; set; }
         public string Address { get; set; }
-        public Status Status { get; set; }
         public DateTime last_sync_date_time { get; set; }
+        public byte[] Photo { get; set; }
     }
 }
