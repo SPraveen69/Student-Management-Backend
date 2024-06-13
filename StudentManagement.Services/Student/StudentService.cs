@@ -35,7 +35,7 @@ namespace StudentManagement.Services.Student
 
         List<StudentManagement.Models.Student> IStudentRepository.AllStudents()
         {
-            return _context.Students.ToList();
+            return _context.Students.Where(s => s.Status == Status.Active).ToList();
         }
 
         StudentManagement.Models.Student IStudentRepository.DeleteStudent(int id)

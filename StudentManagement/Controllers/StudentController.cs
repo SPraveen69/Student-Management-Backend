@@ -23,9 +23,15 @@ namespace StudentManagement.Controllers
         [HttpPost]
         [Route("AddStudent")]
         public async Task<IActionResult> AddStudent([FromForm] StudentDto studentDto)
-        {
+        U{
             try
             {
+                byte[] photoBytes = null;
+
+                if (studentDto.Photo != null)
+                {
+                    photoBytes = await ConvertIFormFileToByteArray(studentDto.Photo);
+                }
                 var student = new Student
                 {
                     Id = studentDto.Id,
@@ -108,7 +114,7 @@ namespace StudentManagement.Controllers
                         existStudent.Photo = await ConvertIFormFileToByteArray(studentDto.Photo);
                     }*/
 
-                    
+
                 };
                 _SMDBContext.Students.Update(existStudent);
                 await _SMDBContext.SaveChangesAsync();
