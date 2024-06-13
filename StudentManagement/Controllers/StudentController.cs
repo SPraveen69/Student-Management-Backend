@@ -51,14 +51,16 @@ namespace StudentManagement.Controllers
             }
         }
         private async Task<byte[]> ConvertIFormFileToByteArray(IFormFile file)
-{
-    if (file == null || file.Length == 0) return null;
-    using (var memoryStream = new MemoryStream())
-    {
-        await file.CopyToAsync(memoryStream);
-        return memoryStream.ToArray();
-    }
-}
+        {
+            if (file == null || file.Length == 0) 
+                return null;
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+
         [HttpGet]
         [Route("GetAllStudents")]
         public IActionResult GetAllStudents()
@@ -85,15 +87,38 @@ namespace StudentManagement.Controllers
 
         [HttpPut]
         [Route("EditStudent/{studentId}")]
-        public IActionResult EditStudent(int studentId, StudentDto studentDto)
+        public async Task<IActionResult> EditStudent( int studentId, StudentDtos studentDto)
         {
-            var editStudent = _studentRepository.EditStudent(studentId, studentDto);
-            if(editStudent == null)
+            try
             {
-                return NotFound();
-            }
-            return Ok(editStudent);
+                var existStudent = _SMDBContext.Students.Find(studentId);
+                if (existStudent != null)
+                {
+                    existStudent.Id = studentId;
+                    existStudent.FirstName = studentDto.FirstName;
+                    existStudent.LastName = studentDto.LastName;
+                    existStudent.Email = studentDto.Email;
+                    existStudent.Phone = studentDto.Phone;
+                    existStudent.NIC = studentDto.NIC;
+                    existStudent.DOB = studentDto.DOB;
+                    existStudent.Address = studentDto.Address;
+                    existStudent.last_sync_date_time = DateTime.Now;
+                   /* if (studentDto.Photo != null)
+                    {
+                        existStudent.Photo = await ConvertIFormFileToByteArray(studentDto.Photo);
+                    }*/
 
+                    
+                };
+                _SMDBContext.Students.Update(existStudent);
+                await _SMDBContext.SaveChangesAsync();
+                return Ok(existStudent);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpGet]
