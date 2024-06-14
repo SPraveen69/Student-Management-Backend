@@ -23,15 +23,15 @@ namespace StudentManagement.Controllers
         [HttpPost]
         [Route("AddStudent")]
         public async Task<IActionResult> AddStudent([FromForm] StudentDto studentDto)
-        U{
+        {
             try
             {
-                byte[] photoBytes = null;
+               /* byte[] photoBytes = null;
 
                 if (studentDto.Photo != null)
                 {
                     photoBytes = await ConvertIFormFileToByteArray(studentDto.Photo);
-                }
+                }*/
                 var student = new Student
                 {
                     Id = studentDto.Id,
